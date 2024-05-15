@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import ListEntries from './ListEntries';
 
@@ -32,25 +32,36 @@ function App() {
   }
 
   const handleAddEntry = () => {
-    console.log('Add Entry');
+    // console.log('Add Entry');
 
-    let entries = {
-      income: [{ description: 'Salary', amount: 5000, id: 1 }],
-      expense: [{ description: 'Rent', amount: 1200, id: 2 }]
+    // let entries = {
+    //   income: [{ description: 'Salary', amount: 5000, id: 1 }],
+    //   expense: [{ description: 'Rent', amount: 1200, id: 2 }]
+    // };
+
+    // let type = 'income';
+    // let newEntry = { description: 'Bonus', amount: 1200, id:3 };
+
+    // console.log('Original:', entries);
+
+    const newEntry = {
+      description: description,
+      amount: parseFloat(amount),
+      id: Date.now()
     };
 
-    let type = 'income';
-    let newEntry = { description: 'Bonus', amount: 1200, id:3 };
-
-    console.log('Original:', entries);
-
-    entries = {
+    setEntries({
       ...entries,
       [type]:[...entries[type], newEntry]
-    };
+    });
 
-    console.log('Updated:', entries);
+    setDescription('');
+    setAmount('');
   }
+
+  useEffect(() => {
+    console.log('Entries:', entries);
+  }, [entries]);
 
   return (
     <div>
