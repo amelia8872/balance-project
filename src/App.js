@@ -65,6 +65,13 @@ function App() {
     setAmount('');
   }
 
+  const handleDelete = (type, id) => {
+    setEntries({
+      ...entries,
+      [type]: entries[type].filter(entry => entry.id !==id)
+    });
+  }
+
   useEffect(() => {
     console.log('Entries:', entries);
   }, [entries]);
@@ -87,8 +94,8 @@ function App() {
       </div>
 
       <div>
-        <ListEntries entries={entries.income} type="income" />
-        <ListEntries entries={entries.expense} type="expense" />
+        <ListEntries entries={entries.income} type="income" onDelete={handleDelete} />
+        <ListEntries entries={entries.expense} type="expense" onDelete={handleDelete} />
       </div>
     </div>
   );
