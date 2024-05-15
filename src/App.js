@@ -13,7 +13,13 @@ function App() {
   const [type, setType] = useState('income');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const balance = 0;
+
+
+  const calculateTotal = (type) => {
+    return entries[type].reduce((acc, curr) => acc + curr.amount, 0);
+  };
+
+  const balance = calculateTotal('income') - calculateTotal('expense');
 
 
   const handleTypeChange = (event) => {
