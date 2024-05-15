@@ -4,6 +4,7 @@ import ListEntries from './ListEntries';
 
 function App() {
 
+
   const [entries, setEntries] = useState({
     income: [],
     expense: []
@@ -32,6 +33,23 @@ function App() {
 
   const handleAddEntry = () => {
     console.log('Add Entry');
+
+    let entries = {
+      income: [{ description: 'Salary', amount: 5000, id: 1 }],
+      expense: [{ description: 'Rent', amount: 1200, id: 2 }]
+    };
+
+    let type = 'income';
+    let newEntry = { description: 'Bonus', amount: 1200, id:3 };
+
+    console.log('Original:', entries);
+
+    entries = {
+      ...entries,
+      [type]:[...entries[type], newEntry]
+    };
+
+    console.log('Updated:', entries);
   }
 
   return (
