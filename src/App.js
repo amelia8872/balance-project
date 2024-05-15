@@ -81,8 +81,8 @@ function App() {
       </div>
 
       <div>
-        <ListEntries entries={entries.income} />
-        <ListEntries entries={entries.expense} />
+        <ListEntries entries={entries.income} type="income" />
+        <ListEntries entries={entries.expense} type="expense" />
       </div>
     </div>
   );
